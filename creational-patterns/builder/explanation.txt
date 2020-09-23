@@ -1,0 +1,32 @@
+Continuing with our example of airplanes let's say the construction of an aircraft involves the three steps in order:
+
+    the making of the cockpit
+    then the engine
+    and finally the wings
+
+In our hypothetical world, every aircraft requires at least the above three steps. However, a passenger aircraft can have an added step of making bathrooms in the plane. 
+The steps represent the construction process from our formal definition. The product is an aircraft but can have different representations such as an F-16 or a Boeing-747. 
+Using the same construction process, we should be able to produce both F-16s and Boeings.
+
+Let's see some code now. First we'll start with the abstract interface for our AircraftBuilder class. 
+The builder contains a method for each component that can be part of the final product. 
+These methods are selectively overridden by concrete builders depending on if the builders will be including that part in the final product variant that they are 
+responsible for building.
+
+For brevity's sake, we have provided the skeleton of the builders and skipped individual implementation of each method. Note the F16Builder doesn't override the 
+buildBathrooms method, since there are no bathrooms in the F-16 cockpit. The Boeing's builder does override the bathroom's method since a Boeing-747 has bathrooms 
+for passengers.
+
+The process or algorithm required to construct the aircraft which in our case is the specific order in which the different parts are created is captured by another 
+class called the Director. The director is in a sense directing the construction of the aircraft. The final product is still returned by the builders.
+
+Notice how we can pass in the builder of our choice, and vary the aircraft product (representation) to be either an F-16 or a Boeing-747. In our scenario, 
+the builders return the same supertype however that may not be the case if the builders return products that aren't very similar.
+
+The client will consume the pattern as written
+
+The AircraftBuilder interface hides how a given aircraft gets built. The client is unaware of the classes F16Engine, F16Cockpit and similar classes for Boeing-747.
+
+You may find the builder pattern being used without the director. The client can directly instantiate the builder and invoke the required methods to get a product for 
+itself. This is a common antidote for telescoping constructors. Imagine a class with too many attributes but some attributes are to be set optionally. In such a case 
+the builder can be invoked to only set the required attributes and create a product

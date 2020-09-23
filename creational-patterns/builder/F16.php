@@ -6,5 +6,5 @@
 use IAircraft;
 
 class F16 implements IAircraft{
-
+    
 }
