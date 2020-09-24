@@ -29,4 +29,7 @@ The AircraftBuilder interface hides how a given aircraft gets built. The client 
 
 You may find the builder pattern being used without the director. The client can directly instantiate the builder and invoke the required methods to get a product for 
 itself. This is a common antidote for telescoping constructors. Imagine a class with too many attributes but some attributes are to be set optionally. In such a case 
-the builder can be invoked to only set the required attributes and create a product
+the builder can be invoked to only set the required attributes and create a product.
+
+In addition, the director class completely hides the details of product construction from the client code. The client only needs to associate a builder with a director, 
+launch the construction with the director, and get the result from the builder.
